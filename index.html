@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>David Agyemang — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #14171F;
+    --panel: #1C2130;
+    --panel-hover: #232A3D;
+    --gold: #E8A93A;
+    --red: #C1443B;
+    --green: #2F6E52;
+    --text: #EDEBE3;
+    --muted: #9098AC;
+    --border: #2B3145;
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'Inter', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  *{ box-sizing: border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a{ color: inherit; text-decoration: none; }
+
+  .wrap{
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* Signature pattern bar — kente-stripe motif */
+  .pattern-bar{
+    height: 10px;
+    width: 100%;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--gold) 0 24px,
+      var(--bg) 24px 28px,
+      var(--red) 28px 52px,
+      var(--bg) 52px 56px,
+      var(--green) 56px 80px,
+      var(--bg) 80px 84px
+    );
+  }
+
+  /* HERO */
+  .hero{
+    padding: 88px 0 64px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .hero-text{ flex: 1; min-width: 320px; }
+
+  .hero-photo{
+    width: 200px;
+    height: 300px;
+    flex-shrink: 0;
+    object-fit: cover;
+    border-radius: 8px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+  }
+
+  .eyebrow{
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    display: block;
+  }
+
+  h1{
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(40px, 6vw, 64px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+  }
+
+  .hero-title{
+    font-family: var(--body);
+    font-size: 19px;
+    color: var(--muted);
+    max-width: 560px;
+    margin-bottom: 36px;
+  }
+
+  .contact-row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .contact-pill{
+    font-family: var(--mono);
+    font-size: 13px;
+    padding: 10px 18px;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+
+  .contact-pill:hover{
+    border-color: var(--gold);
+    background: var(--panel);
+  }
+
+  .dot{
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+
+  /* SECTIONS */
+  section{
+    padding: 64px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .section-head{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  h2{
+    font-family: var(--display);
+    font-size: 28px;
+    font-weight: 600;
+  }
+
+  .section-note{
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .about-text{
+    max-width: 640px;
+    font-size: 17px;
+    color: var(--text);
+  }
+
+  .about-text + .about-text{
+    margin-top: 16px;
+    color: var(--muted);
+  }
+
+  /* PROJECT GRID */
+  .grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .card{
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 6px;
+    padding: 28px 26px;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .card:hover{
+    background: var(--panel-hover);
+    transform: translateY(-2px);
+  }
+
+  .card:nth-child(2){ border-left-color: var(--red); }
+  .card:nth-child(3){ border-left-color: var(--green); }
+  .card:nth-child(4){ border-left-color: var(--gold); }
+
+  .card-eyebrow{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .card h3{
+    font-family: var(--display);
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    line-height: 1.25;
+  }
+
+  .card p{
+    font-size: 14.5px;
+    color: var(--muted);
+    margin-bottom: 18px;
+  }
+
+  .tags{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tag{
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 5px 10px;
+    background: rgba(232, 169, 58, 0.08);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--text);
+  }
+
+  /* TIMELINE (experience / education) */
+  .timeline{
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .tl-item{
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 24px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .tl-item:last-child{
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .tl-date{
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--gold);
+    letter-spacing: 0.04em;
+    padding-top: 3px;
+  }
+
+  .tl-item h3{
+    font-family: var(--display);
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+
+  .tl-org{
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .tl-item ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .tl-item li{
+    font-size: 14.5px;
+    color: var(--text);
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .tl-item li::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+
+  /* SKILLS */
+  .skill-group{
+    margin-bottom: 24px;
+  }
+
+  .skill-group:last-child{ margin-bottom: 0; }
+
+  .skill-label{
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .skill-tags{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* ADDITIONAL INFO */
+  .info-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .info-block h4{
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+  }
+
+  .info-block p{
+    font-size: 14.5px;
+    color: var(--muted);
+  }
+
+  /* CREATIVE SECTION */
+  .creative-card{
+    background: linear-gradient(135deg, rgba(232,169,58,0.06), rgba(193,68,59,0.06));
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .creative-card h3{
+    font-family: var(--display);
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+
+  .creative-card p{
+    color: var(--muted);
+    max-width: 440px;
+    font-size: 15px;
+  }
+
+  .btn{
+    font-family: var(--mono);
+    font-size: 13px;
+    padding: 12px 22px;
+    border: 1px solid var(--gold);
+    border-radius: 100px;
+    white-space: nowrap;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .btn:hover{
+    background: var(--gold);
+    color: var(--bg);
+  }
+
+  /* FOOTER */
+  footer{
+    padding: 48px 0 40px;
+    text-align: center;
+  }
+
+  footer p{
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  footer .contact-row{
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 640px){
+    .grid{ grid-template-columns: 1fr; }
+    .hero{ padding: 56px 0 40px; flex-direction: column-reverse; }
+    section{ padding: 48px 0; }
+    .tl-item{ grid-template-columns: 1fr; gap: 6px; }
+    .info-grid{ grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    .card, .btn, .contact-pill{ transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="pattern-bar"></div>
+
+<div class="wrap">
+  <div class="hero">
+    <div class="hero-text">
+      <span class="eyebrow">Public Relations · Youth Development · Computing</span>
+      <h1>David Agyemang</h1>
+      <p class="hero-title">PR practitioner and youth development advocate, currently expanding into computing through the NCC Level 4 Diploma at IPMC University College.</p>
+      <div class="contact-row">
+        <a class="contact-pill" href="mailto:kuamepianote@gmail.com"><span class="dot"></span>kuamepianote@gmail.com</a>
+        <a class="contact-pill" href="https://www.linkedin.com/in/david-agyemang1" target="_blank" rel="noopener"><span class="dot"></span>LinkedIn</a>
+        <a class="contact-pill" href="https://www.youtube.com/@SunshinekidsTV" target="_blank" rel="noopener"><span class="dot"></span>Sunshine Kids TV</a>
+        <a class="contact-pill" href="https://www.instagram.com/david_k_y_agyemang" target="_blank" rel="noopener"><span class="dot"></span>Instagram</a>
+      </div>
+    </div>
+    <img class="hero-photo" src="david-photo.jpg" alt="David Agyemang">
+  </div>
+</div>
+
+<div class="pattern-bar"></div>
+
+<div class="wrap">
+
+  <section id="about">
+    <div class="section-head">
+      <h2>The Journey So Far</h2>
+      <span class="section-note">About</span>
+    </div>
+    <p class="about-text">I'm a Public Relations student at UPSA and a Computing student at IPMC, working at the intersection of communication, leadership, and technology. Through the Rosemond Girl Child Foundation I plan and coordinate programmes supporting girls' education and youth development, and I lead youth programmes at Comfort Word Chapel. In 2025 I studied International Human Rights, Conflict Management, and Peace Building at the Jacobs-Abbey Global Institute for Leadership Studies in the USA.</p>
+    <p class="about-text">This page brings that together — the community work, the coursework, and what I build outside of both.</p>
+  </section>
+
+  <section id="experience">
+    <div class="section-head">
+      <h2>Experience</h2>
+      <span class="section-note">Community &amp; Leadership</span>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <span class="tl-date">Jan 2023 — Present</span>
+        <div>
+          <h3>Youth Programme Coordinator</h3>
+          <span class="tl-org">Rosemond Girl Child Foundation</span>
+          <ul>
+            <li>Plan and coordinate programmes that support girls' education and youth development.</li>
+            <li>Engage stakeholders, volunteers, and community members to implement impactful initiatives.</li>
+            <li>Organise events and workshops to build leadership and empowerment among young people.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-date">Feb 2020 — Present</span>
+        <div>
+          <h3>Youth Leader</h3>
+          <span class="tl-org">Comfort Word Chapel</span>
+          <ul>
+            <li>Lead youth gatherings and programmes to promote spiritual and personal growth.</li>
+            <li>Mobilise and coordinate young people for community service and leadership activities.</li>
+            <li>Develop communication and event strategies to increase youth participation.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="section-head">
+      <h2>Education</h2>
+      <span class="section-note">Academic Background</span>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <span class="tl-date">Aug 2023 — Present</span>
+        <div>
+          <h3>BA Public Relations</h3>
+          <span class="tl-org">University of Professional Studies (UPSA)</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-date">Diploma</span>
+        <div>
+          <h3>Diploma in Public Relations</h3>
+          <span class="tl-org">University of Professional Studies (UPSA)</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-date">May 2026 — Present</span>
+        <div>
+          <h3>BSc Computing — NCC Level 4 Diploma</h3>
+          <span class="tl-org">IPMC University College, Ghana</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-date">2025</span>
+        <div>
+          <h3>International Human Rights, Conflict Management &amp; Peace Building</h3>
+          <span class="tl-org">Jacobs-Abbey Global Institute for Leadership Studies, USA</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-head">
+      <h2>Skills</h2>
+      <span class="section-note">Toolkit</span>
+    </div>
+    <div class="skill-group">
+      <span class="skill-label">Communication &amp; PR</span>
+      <div class="skill-tags">
+        <span class="tag">Media Management &amp; PR Strategy</span>
+        <span class="tag">Event Planning &amp; Coordination</span>
+        <span class="tag">Social Media &amp; Content Creation</span>
+        <span class="tag">Public Speaking &amp; Presentation</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <span class="skill-label">Leadership &amp; Community</span>
+      <div class="skill-tags">
+        <span class="tag">Community Engagement &amp; Outreach</span>
+        <span class="tag">Leadership &amp; Team Coordination</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="section-head">
+      <h2>Computing Coursework</h2>
+      <span class="section-note">NCC Modules</span>
+    </div>
+    <div class="grid">
+
+      <div class="card">
+        <span class="card-eyebrow">Software Engineering</span>
+        <h3>Integrated Attendance Management System (IAMS)</h3>
+        <p>A full six-task systems project for IPMC University College, from requirements through to testing — UML use case and class diagrams, a work breakdown structure and Gantt chart, clickable UI prototypes, and 16 documented test cases.</p>
+        <div class="tags">
+          <span class="tag">UML</span>
+          <span class="tag">Systems Analysis</span>
+          <span class="tag">UI Prototyping</span>
+          <span class="tag">Project Planning</span>
+          <span class="tag">Testing</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-eyebrow">Essentials of Management</span>
+        <h3>Amazon: Structure, Strategy &amp; Leadership</h3>
+        <p>An analysis of Amazon's management approach — applying Katz's managerial skills framework, Burns and Stalker's organisational structure model, SWOT analysis alongside Goal-Setting Theory, and Woodcock's Building Blocks with Lewin's leadership styles.</p>
+        <div class="tags">
+          <span class="tag">Organisational Analysis</span>
+          <span class="tag">SWOT</span>
+          <span class="tag">Leadership Theory</span>
+          <span class="tag">Case Study</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-eyebrow">Electronic Business</span>
+        <h3>Amazon's E-Commerce Model</h3>
+        <p>A six-part study of how Amazon runs its digital business — emerging technologies, CRM, supply chain management, marketplace revenue, security threats, and a five-year e-commerce strategy.</p>
+        <div class="tags">
+          <span class="tag">E-Commerce</span>
+          <span class="tag">CRM</span>
+          <span class="tag">Supply Chain</span>
+          <span class="tag">Digital Strategy</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-eyebrow">Computer Systems</span>
+        <h3>QuantumTech: Systems &amp; Networking</h3>
+        <p>A scenario-based project covering hardware components, operating system functions, and software categories, plus networking — LAN/MAN/WAN, topologies, and the OSI model — alongside distributed and quantum computing concepts.</p>
+        <div class="tags">
+          <span class="tag">Networking</span>
+          <span class="tag">OSI Model</span>
+          <span class="tag">Hardware</span>
+          <span class="tag">Distributed Computing</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="additional">
+    <div class="section-head">
+      <h2>Additional Information</h2>
+      <span class="section-note">Beyond the Résumé</span>
+    </div>
+    <div class="info-grid">
+      <div class="info-block">
+        <h4>Awards</h4>
+        <p>Outstanding Youth Leadership Award, for contributions to girls' education and youth development at the Rosemond Girl Child Foundation.</p>
+      </div>
+      <div class="info-block">
+        <h4>Languages</h4>
+        <p>English (Fluent)</p>
+      </div>
+      <div class="info-block">
+        <h4>Volunteer Work</h4>
+        <p>Active volunteer in youth development and education initiatives on campus.</p>
+      </div>
+      <div class="info-block">
+        <h4>Interests</h4>
+        <p>Youth leadership, community service, reading, public speaking &amp; technology.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="creative">
+    <div class="section-head">
+      <h2>Outside the Classroom</h2>
+      <span class="section-note">Creative Work</span>
+    </div>
+    <div class="creative-card">
+      <div>
+        <h3>Sunshine Kids TV</h3>
+        <p>A YouTube channel producing animated content for young children, blending storytelling with values kids can carry into everyday life.</p>
+      </div>
+      <a class="btn" href="https://www.youtube.com/@SunshinekidsTV" target="_blank" rel="noopener">Watch on YouTube →</a>
+    </div>
+
+    <div class="creative-card" style="margin-top: 20px;">
+      <div>
+        <h3>Music</h3>
+        <p>I play bass guitar and keyboard, and sing — mostly for church and personal projects.</p>
+      </div>
+      <a class="btn" href="https://www.instagram.com/david_k_y_agyemang" target="_blank" rel="noopener">Follow on Instagram →</a>
+    </div>
+  </section>
+
+</div>
+
+<div class="pattern-bar"></div>
+
+<footer>
+  <div class="wrap">
+    <div class="contact-row">
+      <a class="contact-pill" href="mailto:kuamepianote@gmail.com"><span class="dot"></span>Email</a>
+      <a class="contact-pill" href="https://www.linkedin.com/in/david-agyemang1" target="_blank" rel="noopener"><span class="dot"></span>LinkedIn</a>
+      <a class="contact-pill" href="https://www.youtube.com/@SunshinekidsTV" target="_blank" rel="noopener"><span class="dot"></span>Sunshine Kids TV</a>
+      <a class="contact-pill" href="https://www.instagram.com/david_k_y_agyemang" target="_blank" rel="noopener"><span class="dot"></span>Instagram</a>
+    </div>
+    <p>David Agyemang · IPMC University College · NCC Level 4 Diploma in Computing</p>
+  </div>
+</footer>
+
+</body>
+</html>
